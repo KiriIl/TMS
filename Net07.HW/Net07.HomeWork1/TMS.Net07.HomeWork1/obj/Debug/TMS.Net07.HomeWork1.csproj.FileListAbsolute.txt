@@ -1,0 +1,7 @@
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\bin\Debug\TMS.Net07.HomeWork1.exe.config
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\bin\Debug\TMS.Net07.HomeWork1.exe
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\bin\Debug\TMS.Net07.HomeWork1.pdb
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\obj\Debug\TMS.Net07.HomeWork1.csprojAssemblyReference.cache
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\obj\Debug\TMS.Net07.HomeWork1.csproj.CoreCompileInputs.cache
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\obj\Debug\TMS.Net07.HomeWork1.exe
+C:\Users\Kirill\source\repos\курсы\TMS.Net07.HomeWork1\TMS.Net07.HomeWork1\obj\Debug\TMS.Net07.HomeWork1.pdb
