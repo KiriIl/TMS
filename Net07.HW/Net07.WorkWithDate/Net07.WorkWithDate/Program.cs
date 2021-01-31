@@ -32,39 +32,37 @@ namespace Net07.WorkWithDate
         }
         static void Main(string[] args)
         {
-            //GetDayOfWeekEasyLevel();
-            Console.Write("Введите дату ");
-            string date = "01.03.0103";
-            //date = Console.ReadLine();
-            GetDayOfWeekMiddleLevel(date);
-            GetDayOfWeekHardLevel(date);
+            GetDayOfWeekEasyLevel();
+            GetDayOfWeekMiddleLevel();
+            GetDayOfWeekHardLevel();
         }
 
-        private static void GetDayOfWeekHardLevel(string dateStr)
+        private static void GetDayOfWeekHardLevel()
         {
+            Console.WriteLine("Введите дату ");
+            string dateStr = Console.ReadLine();
             string[] strArr = dateStr.Split('.');
-            int dayInDate = int.Parse(strArr[0]);
-            int monthInDate = int.Parse(strArr[1]);
-            int yearInDate = int.Parse(strArr[2]);
-            int leapDays;
-
-
-
-            if (isleap(yearInDate))
-                leapDays = yearInDate / 4 - 1;
-            else
-                leapDays = yearInDate / 4;
-
-
+            int dayInDate = int.Parse(strArr[0]), monthInDate = int.Parse(strArr[1]), yearInDate = int.Parse(strArr[2]), leapDays = CalcLeapDays(yearInDate);
             int totalDays = 365 * (yearInDate - 1) + leapDays;
             for (int i = 1; i < monthInDate; i++)
-                totalDays += GetDaysByMonth(i, isleap(yearInDate));
+                totalDays += GetDaysByMonth(i, Isleap(yearInDate));
             totalDays += dayInDate;
             Console.WriteLine(GetDayOfWeekByMod(totalDays));
             Console.WriteLine(totalDays);
         }
 
-        private static bool isleap(int yearInDate)
+        private static int CalcLeapDays(int yearInDate)
+        {
+            bool currentYearIsLeap = Isleap(yearInDate);
+            int leapDays = yearInDate / 4;
+            if (currentYearIsLeap)
+                leapDays--;
+            int everyCentury = yearInDate / 100;
+            int everyFourCentury = yearInDate / 400;
+            return leapDays - everyCentury + everyFourCentury;
+        }
+
+        private static bool Isleap(int yearInDate)
         {
             if (yearInDate % 4 == 0)
                 return true;
@@ -109,40 +107,54 @@ namespace Net07.WorkWithDate
             }
         }
 
-        private static void GetDayOfWeekMiddleLevel(string dateStr)
+        private static void GetDayOfWeekMiddleLevel()
         {
-            DateTime date = DateTime.Parse(dateStr);
-            Console.WriteLine(date.DayOfWeek);
+            DateTime date;
+            string inputString;
+            while (true)
+            {
+                Console.WriteLine("Введите дату ");
+                inputString = Console.ReadLine();
+                switch (inputString.ToLower())
+                {
+                    case "exit": return;
+                    default:
+                    {
+                        if (!DateTime.TryParse(inputString, out date))
+                        {
+                            Console.WriteLine("Дата введена неправильно");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(date.DayOfWeek);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private static void GetDayOfWeekEasyLevel()
         {
-            while(true)
+            string inputString;
+            while (true)
             {
                 Console.Write("Введите день недели ");
-                string inputString = Console.ReadLine();
+                inputString = Console.ReadLine();
                 switch (inputString.ToLower())
                 {
-                    case "понедельник": Console.WriteLine($"Перевод: {DaysOfWeek.Monday}"); break;
-                    case "вторник": Console.WriteLine($"Перевод: {DaysOfWeek.Tuesday}"); break;
-                    case "среда": Console.WriteLine($"Перевод: {DaysOfWeek.Wednsday}"); break;
-                    case "Четверг": Console.WriteLine($"Перевод: {DaysOfWeek.Thursday}"); break;
-                    case "пятница": Console.WriteLine($"Перевод: {DaysOfWeek.Friday}"); break;
-                    case "суббота": Console.WriteLine($"Перевод: {DaysOfWeek.Saturday}"); break;
-                    case "воскресенье": Console.WriteLine($"Перевод: {DaysOfWeek.Sunday}"); break;
+                    case "monday": Console.WriteLine("Понедельник"); break;
+                    case "tuesday": Console.WriteLine("Вторник"); break;
+                    case "wednsday": Console.WriteLine("Среда"); break;
+                    case "thursday": Console.WriteLine("Четверг"); break;
+                    case "friday": Console.WriteLine("Пятница"); break;
+                    case "saturday": Console.WriteLine("Суббота"); break;
+                    case "sunday": Console.WriteLine("Воскресенье"); break;
                     case "exit": return;
-                    default:  break;
+                    default: Console.WriteLine("Некорректный ввод дня недели"); break;
                 }
             }
         }
-        //1827 - понедельник
-        //1827 / 7 == 261, остаток 0 -вс
-        //1828 / 7 = 261,1428 остаток 1 -пн
-        //1829 / 7 = 261,2857 остаток 2 -вт
-        //1830 / 7 = 261,4285 остаток 3 -ср
-        //1831 / 7 = 261,5714 остаток 4 -чт
-        //1832 / 7 = 261,7142 остаток 5 -пт
-        //1833 / 7 = 261,8571 остаток 6 -сб
-        //1834 / 7 = 262 остаток 0 -вс
     }
 }
