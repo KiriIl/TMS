@@ -20,6 +20,7 @@ namespace Net07.WorkWithDate
             nov = 30,
             dec = 31
         }
+
         enum DaysOfWeek
         {
             Monday,
@@ -30,6 +31,7 @@ namespace Net07.WorkWithDate
             Saturday,
             Sunday
         }
+
         static void Main(string[] args)
         {
             GetDayOfWeekEasyLevel();
@@ -42,10 +44,15 @@ namespace Net07.WorkWithDate
             Console.WriteLine("Введите дату ");
             string dateStr = Console.ReadLine();
             string[] strArr = dateStr.Split('.');
-            int dayInDate = int.Parse(strArr[0]), monthInDate = int.Parse(strArr[1]), yearInDate = int.Parse(strArr[2]), leapDays = CalcLeapDays(yearInDate);
+            int dayInDate = int.Parse(strArr[0]);
+            int monthInDate = int.Parse(strArr[1]);
+            int yearInDate = int.Parse(strArr[2]);
+            int leapDays = CalcLeapDays(yearInDate);
             int totalDays = 365 * (yearInDate - 1) + leapDays;
             for (int i = 1; i < monthInDate; i++)
+            {
                 totalDays += GetDaysByMonth(i, Isleap(yearInDate));
+            }
             totalDays += dayInDate;
             Console.WriteLine(GetDayOfWeekByMod(totalDays));
             Console.WriteLine(totalDays);
@@ -62,13 +69,7 @@ namespace Net07.WorkWithDate
             return leapDays - everyCentury + everyFourCentury;
         }
 
-        private static bool Isleap(int yearInDate)
-        {
-            if (yearInDate % 4 == 0)
-                return true;
-            else
-                return false;
-        }
+        private static bool Isleap(int yearInDate) => yearInDate % 4 == 0;
 
         private static DaysOfWeek GetDayOfWeekByMod(int totalDays)
         {
@@ -82,7 +83,7 @@ namespace Net07.WorkWithDate
                 case 5: return DaysOfWeek.Friday;
                 case 6: return DaysOfWeek.Saturday;
                 case 0: return DaysOfWeek.Sunday;
-                default: throw new Exception();
+                default: throw new Exception("Unexpected day of week");
             }
         }
 
@@ -115,21 +116,17 @@ namespace Net07.WorkWithDate
             {
                 Console.WriteLine("Введите дату ");
                 inputString = Console.ReadLine();
-                switch (inputString.ToLower())
+                if (inputString.ToLower() == "exit")
+                    return;
+                else
                 {
-                    case "exit": return;
-                    default:
+                    if (!DateTime.TryParse(inputString, out date))
                     {
-                        if (!DateTime.TryParse(inputString, out date))
-                        {
-                            Console.WriteLine("Дата введена неправильно");
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine(date.DayOfWeek);
-                            break;
-                        }
+                        Console.WriteLine("Дата введена неправильно");
+                    }
+                    else
+                    {
+                        Console.WriteLine(date.DayOfWeek);
                     }
                 }
             }
