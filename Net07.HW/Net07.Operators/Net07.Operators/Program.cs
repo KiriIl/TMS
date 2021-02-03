@@ -1,18 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Net07.Operators
 {
     class Program
     {
-        const float EUR = 3.1762f;
-        const float USD = 2.6293f;
-        const float RUB = 0.0346f;
-        const float BLR = 1.0000f;
-        const float percentMarkup = 0.002f;
+        enum Currency
+        {
+            EUR,
+            USD,
+            RUB,
+            BYN
+        }
+
+        const double EUR = 3.1762d;
+        const double USD = 2.6293d;
+        const double RUB = 0.0346d;
+        const double BYN = 1.0000d;
+        const double PERCENTTMARKUP = 1.002d;
+        static double markUpEUR = Math.Round(EUR * PERCENTTMARKUP, 4);
+        static double markUpUSD= Math.Round(USD * PERCENTTMARKUP, 4);
+        static double markUpRUB = Math.Round(RUB * PERCENTTMARKUP, 4);
+
         static void Main(string[] args)
         {
             GetCurrencyEquivalent();
@@ -20,18 +28,48 @@ namespace Net07.Operators
 
         private static void GetCurrencyEquivalent()
         {
-            Console.WriteLine("{0,20} {1,20}", "Банк покупает", "Банк продает");
-            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(EUR), EUR, EUR * (1 + percentMarkup));
-            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(USD), USD, USD * (1 + percentMarkup));
-            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(RUB), RUB, RUB * (1 + percentMarkup));
-            //test
-            float result = CalcCurrency(5, EUR, BLR);
+            Currency convertFrom, convertTo;
+            Console.WriteLine("{0,25} {1,25}", "Стоимость продажи", "Стоимость покупки");
+            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(EUR), EUR, markUpEUR);
+            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(USD), USD, markUpUSD);
+            Console.WriteLine("{0,0} {1,15} {2,20}", nameof(RUB), RUB, markUpRUB);
+            convertFrom = GetCurrencyByInput();
+            convertTo = GetCurrencyByInput();
+            double result = CalcCurrency(100, GetCurrencyValue(convertFrom, false), GetCurrencyValue(convertTo, true));
             Console.WriteLine(result);
         }
 
-        private static float CalcCurrency(float sum, float CurrencyIn, float CurrencyOut)
+        private static Currency GetCurrencyByInput()
         {
-            return sum * CurrencyIn / CurrencyOut;
+            Console.WriteLine("Введите код валюты");
+            string inputString = Console.ReadLine();
+            switch (inputString.ToUpper())
+            {
+                case nameof(Currency.EUR): return Currency.EUR;
+                case nameof(Currency.USD): return Currency.USD;
+                case nameof(Currency.RUB): return Currency.RUB;
+                case nameof(Currency.BYN): return Currency.BYN;
+            }
+            return default;
+        }
+        private static double GetCurrencyValue(Currency currency, bool buy)
+        {
+            switch (currency)
+            {
+                case Currency.EUR when buy: return markUpEUR;
+                case Currency.EUR when !buy: return EUR;
+                case Currency.USD when buy: return markUpUSD;
+                case Currency.USD when !buy: return USD;
+                case Currency.RUB when buy: return markUpRUB;
+                case Currency.RUB when !buy: return RUB;
+                case Currency.BYN: return BYN;
+                default: return default;
+            }
+        }
+        private static double CalcCurrency(double sum, double CurrencyIn, double CurrencyOut)
+        {
+            Console.WriteLine($"{CurrencyIn}     {CurrencyOut}");
+            return Math.Round(sum * CurrencyIn / CurrencyOut, 2);
         }
     }
 }
