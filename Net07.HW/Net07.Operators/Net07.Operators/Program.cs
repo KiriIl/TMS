@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Net07.Operators
 {
@@ -20,11 +22,55 @@ namespace Net07.Operators
         static double markUpEUR = Math.Round(EUR * PERCENTTMARKUP, 4);
         static double markUpUSD= Math.Round(USD * PERCENTTMARKUP, 4);
         static double markUpRUB = Math.Round(RUB * PERCENTTMARKUP, 4);
+        const double FI = 1.6180339887d;
 
         static void Main(string[] args)
         {
             GetCurrencyEquivalent();
+            Console.WriteLine(Fibonacci(40));
+            Console.WriteLine(EFibonacci(40));
+            Console.WriteLine(Factorial(5));
+            Console.WriteLine(FactorialCycle(5));
+            //pattern, not ready
+            Regex regex = new Regex(@"(^\d*)\s{0,}(\+|\-|\*|\/|pow|\%)\s{0,}(\d*)");
         }
+
+        private static uint FactorialCycle(uint n)
+        {
+            uint k = 1;
+            for (uint i = 1; i <= n; i++)
+                k *= i;
+            return k;
+        }
+
+        private static uint Factorial(uint n)
+        {
+            if (n == 0 || n == 1)
+                return 1;
+            else
+                return Factorial(n - 1) * n;
+        }
+
+        private static uint Fibonacci(uint n)
+        {
+            if (n == 0)
+                return 0;
+            else if (n == 1 || n == 2)
+                return 1;
+            else
+                return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        private static uint EFibonacci(uint n)
+        {
+            if (n == 0)
+                return 0;
+            else if (n == 1 || n == 2)
+                return 1;
+            else
+                return Convert.ToUInt32(EFibonacci(n - 1) * FI);
+        }
+
 
         private static void GetCurrencyEquivalent()
         {
@@ -35,8 +81,8 @@ namespace Net07.Operators
             Console.WriteLine("{0,0} {1,15} {2,20}", nameof(RUB), RUB, markUpRUB);
             convertFrom = GetCurrencyByInput();
             convertTo = GetCurrencyByInput();
-            double result = CalcCurrency(100, GetCurrencyValue(convertFrom, false), GetCurrencyValue(convertTo, true));
-            Console.WriteLine(result);
+            double sum = double.Parse(Console.ReadLine());
+            Console.WriteLine(CalcCurrency(sum, GetCurrencyValue(convertFrom, false), GetCurrencyValue(convertTo, true)));
         }
 
         private static Currency GetCurrencyByInput()
@@ -52,6 +98,7 @@ namespace Net07.Operators
             }
             return default;
         }
+
         private static double GetCurrencyValue(Currency currency, bool buy)
         {
             switch (currency)
@@ -66,6 +113,7 @@ namespace Net07.Operators
                 default: return default;
             }
         }
+
         private static double CalcCurrency(double sum, double CurrencyIn, double CurrencyOut)
         {
             Console.WriteLine($"{CurrencyIn}     {CurrencyOut}");
