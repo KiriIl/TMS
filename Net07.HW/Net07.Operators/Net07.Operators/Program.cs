@@ -20,19 +20,72 @@ namespace Net07.Operators
         const double BYN = 1.0000d;
         const double PERCENTTMARKUP = 1.002d;
         static double markUpEUR = Math.Round(EUR * PERCENTTMARKUP, 4);
-        static double markUpUSD= Math.Round(USD * PERCENTTMARKUP, 4);
+        static double markUpUSD = Math.Round(USD * PERCENTTMARKUP, 4);
         static double markUpRUB = Math.Round(RUB * PERCENTTMARKUP, 4);
         const double FI = 1.6180339887d;
+        const string patternBinary = @"(^\d*)\s{0,}(\+|\-|\*|\/|pow|\%)\s{0,}(\d*)";
+        const string patternUnary = @"^(sqrt|sqr)\s{0,}(\d*)";
 
         static void Main(string[] args)
         {
             GetCurrencyEquivalent();
+            Operation();
             Console.WriteLine(Fibonacci(40));
-            Console.WriteLine(EFibonacci(40));
+            Console.WriteLine(EfficientlyFibonacci(40));
             Console.WriteLine(Factorial(5));
             Console.WriteLine(FactorialCycle(5));
-            //pattern, not ready
-            Regex regex = new Regex(@"(^\d*)\s{0,}(\+|\-|\*|\/|pow|\%)\s{0,}(\d*)");
+        }
+
+        private static void Operation()
+        {
+            try
+            {
+                Regex regexBinary = new Regex(patternBinary);
+                Regex regexUnary = new Regex(patternUnary);
+                Console.WriteLine("Введите строку для выполнения операции");
+                string inputString = Console.ReadLine();
+                double result;
+                string operation;
+                int operand1, operand2;
+                if (regexBinary.IsMatch(inputString))
+                {
+                    var temp = regexBinary.Split(inputString);
+                    operand1 = int.Parse(temp[1]);
+                    operation = temp[2];
+                    operand2 = int.Parse(temp[3]);
+                    result = ExecuteOperation(operation, operand1, operand2);
+                }
+                else if (regexUnary.IsMatch(inputString))
+                {
+                    var temp = regexUnary.Split(inputString);
+                    operation = temp[1];
+                    operand1 = int.Parse(temp[2]);
+                    result = ExecuteOperation(operation, operand1);
+                }
+                else
+                {
+                    Console.WriteLine("Недопустимая операция");
+                    return;
+                }
+                Console.WriteLine(result);
+            }
+            catch (FormatException) { Console.WriteLine("Ошибка ввода строки"); }
+        }
+
+        private static double ExecuteOperation(string operation, int operand1, int operand2 = 0)
+        {
+            switch (operation)
+            {
+                case "+": return operand1 + operand2;
+                case "-": return operand1 - operand2;
+                case "/": return operand1 / operand2;
+                case "*": return operand1 * operand2;
+                case "%": return operand1 % operand2;
+                case "pow": return Math.Pow(operand1, operand2);
+                case "sqr": return Math.Pow(operand1, 2);
+                case "sqrt": return Math.Sqrt(operand1);
+                default: return default;
+            }
         }
 
         private static uint FactorialCycle(uint n)
@@ -61,16 +114,15 @@ namespace Net07.Operators
                 return Fibonacci(n - 1) + Fibonacci(n - 2);
         }
 
-        private static uint EFibonacci(uint n)
+        private static uint EfficientlyFibonacci(uint n)
         {
             if (n == 0)
                 return 0;
             else if (n == 1 || n == 2)
                 return 1;
             else
-                return Convert.ToUInt32(EFibonacci(n - 1) * FI);
+                return Convert.ToUInt32(EfficientlyFibonacci(n - 1) * FI);
         }
-
 
         private static void GetCurrencyEquivalent()
         {
