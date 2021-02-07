@@ -1,0 +1,14 @@
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.exe.config
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.exe
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.pdb
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.csprojAssemblyReference.cache
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.csproj.CoreCompileInputs.cache
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.exe
+C:\Users\pack\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.pdb
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.exe.config
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.exe
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\bin\Debug\Net07.WorkWithDate.pdb
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.csprojAssemblyReference.cache
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.csproj.CoreCompileInputs.cache
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.exe
+C:\Users\kirik\source\repos\TMS\Net07.HW\Net07.WorkWithDate\Net07.WorkWithDate\obj\Debug\Net07.WorkWithDate.pdb
