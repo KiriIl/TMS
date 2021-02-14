@@ -4,13 +4,20 @@
     {
         public double Radius { get; }
         public Point Center { get; }
-        public Circle(Point point)
+
+        public override double Area => throw new System.NotImplementedException();
+
+        public override double Perimeter => throw new System.NotImplementedException();
+
+        public Circle(Point point, double radius)
         {
             Center = point;
-        }
-        public Circle(Point point, double radius) : this(point)
-        {
             Radius = radius;
+        }
+
+        protected override bool Validation(params Point[] point)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

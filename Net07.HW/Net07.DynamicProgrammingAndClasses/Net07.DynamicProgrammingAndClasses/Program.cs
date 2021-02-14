@@ -7,9 +7,7 @@ namespace Net07.DynamicProgrammingAndClasses
         static void Main(string[] args)
         {
             EfficientlyFibonacci(40);
-            Rectangle square = new Rectangle(new Point[] { new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0) });
-            Console.WriteLine(square);
-            
+            Square square = new Square(new Point[] { new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0) });
         }
 
         private static void EfficientlyFibonacci(uint n)

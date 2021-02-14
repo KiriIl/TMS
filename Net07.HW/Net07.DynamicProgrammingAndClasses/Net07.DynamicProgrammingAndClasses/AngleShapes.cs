@@ -1,12 +1,15 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Net07.DynamicProgrammingAndClasses
 {
-    class AngleShapes : Shape
+    abstract class AngleShapes : Shape
     {
-        Point[] Points { get; }
+        protected Point[] Points { get; }
         public AngleShapes(params Point[] array)
         {
+            if (!Validation(array))
+                throw new Exception($"Ввод не прошлел проверку для фигуры {GetType().Name}");
             Points = array;
         }
         public override string ToString()
@@ -14,7 +17,7 @@ namespace Net07.DynamicProgrammingAndClasses
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var x in Points)
             {
-                stringBuilder.Append(x + "\n");
+                stringBuilder.AppendLine(x.ToString());
             }
             return stringBuilder.ToString();
         }
