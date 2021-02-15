@@ -23,8 +23,8 @@ namespace Net07.Operators
         static double markUpUSD = Math.Round(USD * PERCENTTMARKUP, 4);
         static double markUpRUB = Math.Round(RUB * PERCENTTMARKUP, 4);
         const double FI = 1.6180339887d;
-        const string patternBinary = @"(?i)(^\d{1,})\s{0,}(pow|\+|\-|\/|\*|\%)\s{0,}(\d{1,}$)";
-        const string patternUnary = @"(?i)^(sqrt|sqr)\s{0,}(\d{1,})";
+        const string patternBinary = @"(?i)(^\d+)\s*(pow|\+|\-|\/|\*|\%)\s*(\d+$)";
+        const string patternUnary = @"(?i)^(sqrt|sqr)\s*(\d+)";
 
         static void Main(string[] args)
         {
