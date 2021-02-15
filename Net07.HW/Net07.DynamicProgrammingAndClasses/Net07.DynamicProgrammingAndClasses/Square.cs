@@ -8,9 +8,7 @@ namespace Net07.DynamicProgrammingAndClasses
 
         public override double Perimeter => Point.GetDistance(Points[0], Points[1]) * 4;
 
-        public Square(Point a, Point b, Point c, Point d) : base(a, b, c, d) { }
-
-        public Square(Point[] array) : base(array)
+        public Square(params Point[] array) : base(array)
         {
             if (array.Length != 4)
             {

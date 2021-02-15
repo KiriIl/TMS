@@ -15,6 +15,7 @@ namespace Net07.DynamicProgrammingAndClasses
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(base.ToString());
             foreach (var x in Points)
             {
                 stringBuilder.AppendLine(x.ToString());

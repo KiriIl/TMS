@@ -7,8 +7,8 @@ namespace Net07.DynamicProgrammingAndClasses
         public override double Area => CalcAreaForTriangle();
 
         public override double Perimeter =>
-            Point.GetDistance(Points[0], Points[1]) + 
-            Point.GetDistance(Points[1], Points[2]) + 
+            Point.GetDistance(Points[0], Points[1]) +
+            Point.GetDistance(Points[1], Points[2]) +
             Point.GetDistance(Points[2], Points[0]);
 
         public Triangle(Point a, Point b, Point c) : base(a, b, c) { }
@@ -24,12 +24,9 @@ namespace Net07.DynamicProgrammingAndClasses
             double a = Point.GetDistance(Points[0], Points[1]);
             double b = Point.GetDistance(Points[1], Points[2]);
             double c = Point.GetDistance(Points[2], Points[0]);
-            //convertin cos to sin
-            //var angle1 = Shape.AngleToRadians(25);
-            //var angle2 = Shape.AngleToRadians(Math.Abs(25 - 90));
-            //Console.WriteLine($"{Math.Sin(angle1)}    {Math.Cos(angle2)}");
-
-            throw new NotImplementedException();
+            var cosAlpha = (a * a + c * c - b * b) / (2 * a * c);
+            var angle = RadiansToAngle(Math.Acos(cosAlpha));
+            return 0.5 * a * b * Math.Sin(AngleToRadians(angle));
         }
 
         protected override bool Validation(params Point[] points)

@@ -8,16 +8,15 @@ namespace Net07.DynamicProgrammingAndClasses
 
         public abstract double Perimeter { get; }
 
-        public static double AngleToRadians(double angle)
-        {
-            return angle * Math.PI / 180;
-        }
+        public static double AngleToRadians(double angle) => angle * Math.PI / 180;
 
-        public static double RadiansToAngle(double rad)
-        {
-            return rad * 180 / Math.PI;
-        }
+        public static double RadiansToAngle(double rad) => rad * 180 / Math.PI;
 
         protected abstract bool Validation(params Point[] points);
+
+        public override string ToString()
+        {
+            return $"{GetType().Name}";
+        }
     }
 }

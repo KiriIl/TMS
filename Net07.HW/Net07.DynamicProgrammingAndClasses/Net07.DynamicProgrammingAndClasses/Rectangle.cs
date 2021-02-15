@@ -10,9 +10,7 @@
             Point.GetDistance(Points[0], Points[1]) * 2 + 
             Point.GetDistance(Points[1], Points[2]) * 2;
 
-        public Rectangle(Point a, Point b, Point c, Point d) : base(a, b, c, d) { }
-
-        public Rectangle(Point[] array) : base(array) { }
+        public Rectangle(params Point[] array) : base(array) { }
 
         protected override bool Validation(params Point[] points)
         {
