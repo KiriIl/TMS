@@ -9,13 +9,9 @@ namespace Net07.DynamicProgrammingAndClasses
             EfficientlyFibonacci(40);
             Square square = new Square(new Point[] { new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0) });
             Circle circle = new Circle(new Point(0, 0), 2);
-            Oval oval = new Oval(new Point(5, 5), 4, 2);
-            Drawer drawer = new ConsoleDescriptionDrawer();
-            drawer.Draw(square);
-            DrawerManager.AddItem(square);
-            DrawerManager.AddItem(circle);
-            DrawerManager.AddItem(oval);
-            DrawerManager.GetLogs(new ConsoleDescriptionDrawer());
+            Ellipse ellipse = new Ellipse(new Point(5, 5), 4, 2);
+            Logger logger = new FileLogger();
+            logger.Log(ellipse);
         }
 
         private static void EfficientlyFibonacci(uint n)

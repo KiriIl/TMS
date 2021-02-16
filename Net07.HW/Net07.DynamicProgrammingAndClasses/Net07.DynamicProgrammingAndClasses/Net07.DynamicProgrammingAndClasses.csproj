@@ -45,12 +45,12 @@
   <ItemGroup>
     <Compile Include="AngleShapes.cs" />
     <Compile Include="Circle.cs" />
-    <Compile Include="ConsoleDescriptionDrawer.cs" />
-    <Compile Include="ConsoleRusDescriptionDrawer.cs" />
-    <Compile Include="Drawer.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="DrawerManager.cs" />
     <Compile Include="list.cs" />
-    <Compile Include="Oval.cs" />
+    <Compile Include="Ellipse.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

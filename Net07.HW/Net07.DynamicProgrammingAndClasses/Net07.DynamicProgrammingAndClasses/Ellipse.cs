@@ -2,7 +2,7 @@
 
 namespace Net07.DynamicProgrammingAndClasses
 {
-    class Oval : Circle
+    class Ellipse : Circle
     {
         public double SmallRadius { get; }
 
@@ -11,7 +11,7 @@ namespace Net07.DynamicProgrammingAndClasses
         public override double Perimeter =>
             Math.PI * 2 * Math.Sqrt((Math.Pow(SmallRadius, 2) + Math.Pow(Radius, 2)) / 2);
 
-        public Oval(Point point, double bigRadius, double smallRadius) : base(point, bigRadius)
+        public Ellipse(Point point, double bigRadius, double smallRadius) : base(point, bigRadius)
         {
             if (smallRadius >= bigRadius)
                 throw new Exception($"Для фигуры {GetType().Name} малый радиус не может быть больше большого радиуса");
