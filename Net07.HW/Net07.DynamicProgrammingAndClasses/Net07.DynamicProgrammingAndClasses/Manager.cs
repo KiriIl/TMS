@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Net07.DynamicProgrammingAndClasses
 {
@@ -18,23 +19,12 @@ namespace Net07.DynamicProgrammingAndClasses
             _shapes.Add(item);
         }
 
-        public static void GetList()
+        public static void GetLogs()
         {
             Console.WriteLine("Logs:");
             foreach (var x in _shapes)
                 Console.WriteLine(x);
         }
-
-        public static Shape GetShape(int i)
-        {
-            return _shapes[i];
-        }
-
-        public static void DrawShape(int i, Logger drawer)
-        {
-            drawer.Log(_shapes[i]);
-        }
-
 
         public static void GetLogs(Logger drawer)
         {
@@ -43,5 +33,8 @@ namespace Net07.DynamicProgrammingAndClasses
                 drawer.Log(x);
         }
 
+        public static Shape GetShape(int i) => _shapes[i];
+
+        public static void DrawShape(int i, Logger drawer) => drawer.Log(_shapes[i]);
     }
 }

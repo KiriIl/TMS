@@ -6,7 +6,7 @@ namespace Net07.DynamicProgrammingAndClasses
     {
         public override void Log(Shape shape)
         {
-            File.WriteAllText("Logger.txt", PrintShape(shape));
+            File.AppendAllText("Logger.txt", PrintShape(shape));
         }
     }
 }
