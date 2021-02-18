@@ -28,12 +28,16 @@ namespace Net07.DynamicProgrammingAndClasses
 
         public static void GetLogs(Logger drawer)
         {
-            Console.WriteLine("Logs:");
             foreach (var x in _shapes)
                 drawer.Log(x);
         }
 
-        public static Shape GetShape(int i) => _shapes[i];
+        public static Shape GetShape(int i)
+        {
+            if (i > count)
+                throw new IndexOutOfRangeException("Такой фигуры в списке нету");
+            return _shapes[i];
+        }
 
         public static void DrawShape(int i, Logger drawer) => drawer.Log(_shapes[i]);
     }
